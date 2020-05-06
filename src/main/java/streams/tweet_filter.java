@@ -38,7 +38,8 @@ public class tweet_filter
 
         KStream<String, GenericRecord> filteredTweets = tweetFeed
                 .filter((tweetKey, tweetStatus) -> tweetStatus.get("Lang").toString().equals("fr"))
-                .filter((key, value) -> value.get("Retweet").equals(false));
+                .filter((key, value) -> value.get("Retweet").equals(false))
+                .peek((key,value) -> System.out.println(value.get("Id") + " " + value.get("CreatedAt")));
 
         filteredTweets.to(OUTPUT_TOPIC);
 
@@ -51,6 +52,7 @@ public class tweet_filter
 
         streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, APP_ID);
         streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, MyConfig.STREAMS_DIR_CONFIG);
+        streamsConfiguration.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE);
         streamsConfiguration.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 100); // 30000 milliseconds (at-least-once) / 100 milliseconds (exactly-once)
         streamsConfiguration.put(StreamsConfig.WINDOW_STORE_CHANGE_LOG_ADDITIONAL_RETENTION_MS_CONFIG, 60000);
         streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, MyConfig.getKafkaServerUrl());

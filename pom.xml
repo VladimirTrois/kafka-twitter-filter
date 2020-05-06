@@ -103,7 +103,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.example.StreamsStarterApp</mainClass>
+                            <mainClass>streams.tweet_filter</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
