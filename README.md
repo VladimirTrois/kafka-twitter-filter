@@ -1,8 +1,8 @@
 # kafka_twitter_filter
 
-## Description
-
 Kafka Streams Filter for tweets coming from Kafka Connect Twitter. 
+
+## Description
 
 Keeps tweets with :
 - Lang = "fr"
