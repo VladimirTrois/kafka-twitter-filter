@@ -1,1 +1,2 @@
-Config\MyConfig.class
+config\KafkaConfig.class
+streams\tweet_filter.class
