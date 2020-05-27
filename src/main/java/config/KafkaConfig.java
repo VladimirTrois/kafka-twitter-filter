@@ -1,9 +1,9 @@
 package config;
 
-public class MyConfig
+public class KafkaConfig
 {
     //Kafka Configuration
-    public static final String KAFKA_HOST_ADRESS = "35.205.126.252";
+    public static final String KAFKA_HOST_ADRESS = "34.77.65.196";
     public static final String STREAMS_DIR_CONFIG = "/tmp/kafka/kafka-streams";
 
     private static final String KAFKA_HOST_PORT = "9093";
